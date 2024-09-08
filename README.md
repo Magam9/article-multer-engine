@@ -1,85 +1,55 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Building a Custom File Upload Module in NestJS for CSV and XLS/XLSX Parsing Without Saving Files to Disk
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Introduction
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This repository demonstrates how to build a custom file upload module in NestJS to handle CSV and XLS/XLSX file uploads. The files are parsed directly in memory using Node.js streams, avoiding saving them to disk. This approach enhances security and reduces server storage costs.
 
-## Description
+## Prerequisites
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Before running the project, ensure that the following are installed on your system:
 
-## Project setup
+- **Docker**: Ensure Docker is installed and running.
+- **Docker Compose**: Installed for container orchestration.
+- **Node.js**: Required to run the application.
+- **npm**: Node package manager to install dependencies.
 
-```bash
-$ npm install
-```
+### Local Environment Example
 
-## Compile and run the project
+Here are the environment details of a machine that successfully runs this application (MacBook Pro with Apple M1 Pro):
 
-```bash
-# development
-$ npm run start
+- **Node.js**: v22.0.0
+- **npm**: v10.5.1
+- **Docker**: v26.0.0
+- **Docker Compose**: v2.26.1-desktop.1
 
-# watch mode
-$ npm run start:dev
+## Features
 
-# production mode
-$ npm run start:prod
-```
+- **In-Memory File Parsing**: CSV and XLS/XLSX files are parsed in memory without being saved to disk.
+- **Secure Processing**: No sensitive data is stored on the server’s file system.
+- **Custom Storage Engine**: Only CSV and Excel files are accepted, with other types rejected.
+- **Stream Processing**: Files are processed efficiently using Node.js streams.
 
-## Run tests
+## Setup
+
+### 1. Clone the Repository
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+git clone https://github.com/Magam9/article-multer-engine
+cd article-multer-engine
 ```
 
-## Resources
+### 2. Install Dependencies
 
-Check out a few resources that may come in handy when working with NestJS:
+```bash
+npm install
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+### 3. Running with Docker
 
-## Support
+To run and debug the application using launch.json, ensure that your IDE (e.g., VSCode) has a proper launch configuration for Node.js.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### 4. Testing File Upload
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+1. Open the file upload page by going to http://localhost:3000.
+2. Select a CSV or XLSX file and click Upload.
+3. The server will parse the file and return the parsed data.
