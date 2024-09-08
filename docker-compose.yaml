@@ -1,0 +1,21 @@
+services:
+  multer-engine:
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    command: npm run start:debug
+    restart: always
+    ports:
+      - '3000:3000'
+      - '2992:9229'
+    volumes:
+      - ./src:/app/src
+      - ./config:/app/config
+      - ./dist:/app/dist
+    networks:
+      - multer-engine
+    extra_hosts:
+      - coreserver:host-gateway
+
+networks:
+  multer-engine:
